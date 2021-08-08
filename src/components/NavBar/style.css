@@ -1,0 +1,27 @@
+nav {
+  width: auto;
+  max-width: 1240px;
+  margin: 0 auto;
+
+  background-color: rgb(165, 163, 163);
+}
+
+nav ul,
+nav li {
+  list-style-type: none;
+  display: inline-block;
+  /* border-right: 1px rgb(255, 255, 255) solid; */
+}
+
+nav li {
+  padding: 10px;
+}
+
+nav a,
+a:hover,
+a:active,
+a:visited,
+a:focus {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+}
