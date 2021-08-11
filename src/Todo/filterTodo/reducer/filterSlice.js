@@ -1,23 +1,27 @@
-import produce from "immer";
-import { sele } from "../../todos/reducer/todosSlice";
+import produce from 'immer';
+import {filterStatusActions as actions} from './filterAction';
 
-export const filterReducer = produce((state, action) => {
-  switch (action.type) {
-    case "todos/todoAdded":
-      state.entities.push(action.payload);
-      break;
+const initState = {
+	colors: ['red', 'blue', 'green', 'orange', 'purple'],
+	filterStatus: {All: actions.ALL, Active: actions.ACTIVE, Completed: actions.COMPELTED},
+	activeFilter: actions.ALL,
+};
 
-    case "todos/todoToggled":
-      state.entities.map((todo) => (todo.id === action.payload ? (todo.completed = !todo.completed) : todo));
-      break;
+export const filtersReducer = produce((state, action) => {
+	switch (action.type) {
+		case 'filter/filterStatus':
+			state.activeFilter = action.payload;
+			break;
 
-    case "todos/todoDeleted":
-      return {
-        ...state,
-        entities: state.entities.filter((todo) => todo.id !== action.payload),
-      };
+		case 'filter/colors':
+			return {
+				...state,
+				colors: state.colors.filter((c) => c !== action.payload),
+			};
 
-    default:
-      return state;
-  }
+		default:
+			return state;
+	}
 }, initState);
+
+export const filterState = (state) => state.filters;

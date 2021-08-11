@@ -1,29 +1,34 @@
-const StatusFilters = {
-    All: 'all',
-    Active: 'active',
-    Completed: 'completed',
-}
+import {useRef, useState} from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import {changeFilterStatus} from './reducer/filterAction';
+import {filterState} from './reducer/filterSlice';
 
-const StatusFilter = ({ value: status }) => {
-    const renderedFilters = Object.keys(StatusFilters).map((key) => {
-        const value = StatusFilters[key]
-        const className = value === status ? 'selected' : ''
+const StatusFilter = () => {
+	const dispatch = useDispatch();
 
-        return (
-            <li key={value}>
-                <button className={className}>
-                    {key}
-                </button>
-            </li>
-        )
-    })
+	const {filterStatus, activeFilter} = useSelector(filterState);
+	const renderedFilters = Object.keys(filterStatus).map((key) => {
+		const value = filterStatus[key];
+		const className = value === activeFilter ? 'selected' : '';
+		const filterSelected = (e) => {
+			console.log(e.target);
+			return dispatch(changeFilterStatus('Active'));
+		};
+		return (
+			<li key={value}>
+				<button className={className} onClick={(e) => filterSelected(e)}>
+					{key}
+				</button>
+			</li>
+		);
+	});
 
-    return (
-        <div className="filters statusFilters">
-            <h5>Filter by Status</h5>
-            <ul>{renderedFilters}</ul>
-        </div>
-    )
-}
+	return (
+		<div className='filters statusFilters'>
+			<h5>Filter by Status</h5>
+			<ul>{renderedFilters}</ul>
+		</div>
+	);
+};
 
-export default StatusFilter
+export default StatusFilter;
