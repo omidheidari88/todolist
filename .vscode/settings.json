@@ -1,0 +1,21 @@
+{
+   "files.exclude": {
+      // "package.json": true,
+      "public": true,
+      ".eslintcache": true,
+      // "*/index.css": true,
+      // "*/index.js": true,
+      ".gitignore": true,
+      ".gitattributes": true,
+      "node_modules": true,
+      "yarn.lock": true,
+      "yarn-error.log": true,
+      "package-lock.json": true,
+      "README.md": true,
+      "*/index.css": true,
+      "*/App.css": true,
+
+
+   },
+   "extensions.ignoreRecommendations": true
+}
