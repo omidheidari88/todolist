@@ -1,9 +1,10 @@
 import produce from 'immer';
 import {filterStatusActions as actions} from './filterAction';
+export const filterStatus = {All: actions.ALL, Active: actions.ACTIVE, Completed: actions.COMPELTED};
+export const availableColors = ['green', 'blue', 'orange', 'purple', 'red'];
 
 const initState = {
-	colors: ['red', 'blue', 'green', 'orange', 'purple'],
-	filterStatus: {All: actions.ALL, Active: actions.ACTIVE, Completed: actions.COMPELTED},
+	colors: [],
 	activeFilter: actions.ALL,
 };
 
@@ -14,11 +15,19 @@ export const filtersReducer = produce((state, action) => {
 			break;
 
 		case 'filter/colors':
-			return {
-				...state,
-				colors: state.colors.filter((c) => c !== action.payload),
-			};
-
+			const {color, type} = action.payload;
+			const {colors} = state;
+			switch (type) {
+				case 'added':
+					state.colors.push(color);
+					break;
+				case 'removed':
+					state.colors = state.colors.filter((c) => c !== color);
+					break;
+				default:
+					return colors;
+			}
+			break;
 		default:
 			return state;
 	}

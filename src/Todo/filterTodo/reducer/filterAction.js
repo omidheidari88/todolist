@@ -1,20 +1,16 @@
 export const changeFilterStatus = (filter) => {
-	console.log(filter);
 	return {
 		type: 'filter/filterStatus',
 		payload: filter,
 	};
 };
 
-export const todoToggled = (todoId) => ({
-	type: 'todos/todoToggled',
-	payload: todoId,
-});
-
-export const todoDeleted = (todoId) => ({
-	type: 'todos/todoDeleted',
-	payload: todoId,
-});
+export const changeColorStatus = (color, type) => {
+	return {
+		type: 'filter/colors',
+		payload: {color, type},
+	};
+};
 
 export const filterStatusActions = {
 	ALL: 'All',

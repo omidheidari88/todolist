@@ -13,7 +13,7 @@ export default function Footer() {
 
 			<RemainingTodos count={1} />
 			<StatusFilter />
-			<ColorFilters value={[]} />
+			<ColorFilters />
 		</footer>
 	);
 }
