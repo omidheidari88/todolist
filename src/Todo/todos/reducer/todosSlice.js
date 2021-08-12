@@ -1,6 +1,6 @@
 import produce from 'immer';
 
-const initState = {
+export const initState = {
 	entities: [
 		{id: 1, text: 'Deign ui', completed: true, color: 'red'},
 		{id: 2, text: 'discover state', completed: false},
@@ -15,13 +15,20 @@ export const todosReducer = produce((state, action) => {
 		case 'todos/todoAdded':
 			state.entities.push(action.payload);
 			break;
-
 		case 'todos/todoToggled':
 			state.entities.map((todo) => (todo.id === action.payload ? (todo.completed = !todo.completed) : todo));
 			break;
-
+		case 'todos/todoChangedColor':
+			state.entities.map((todo) => todo.id === action.payload.todoId && (todo.color = action.payload.color));
+			break;
 		case 'todos/todoDeleted':
 			state.entities = state.entities.filter((todo) => todo.id !== action.payload);
+			break;
+		case 'todos/markAllCompleted':
+			state.entities.map((todo) => !todo.completed && (todo.completed = true));
+			break;
+		case 'todos/clearAllCompleted':
+			state.entities.map((todo) => todo.completed && (todo.completed = false));
 			break;
 		default:
 			return state;
@@ -60,4 +67,4 @@ export const todosReducer = produce((state, action) => {
 //   }
 // };
 
-export const selectTodos = (state) => state.todos.entities;
+export const todosState = (state) => state.todos.entities;

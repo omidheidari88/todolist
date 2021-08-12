@@ -13,10 +13,16 @@ export const todoDeleted = (todoId) => ({
 	payload: todoId,
 });
 
-export const todoChangedColor = (color) => {
-	console.log(color);
+export const todoChangedColor = (todoId, color) => {
 	return {
 		type: 'todos/todoChangedColor',
-		payload: color,
+		payload: {todoId, color},
 	};
 };
+
+export const markAllCompletedTodos = () => ({
+	type: 'todos/markAllCompleted',
+});
+export const clearAllCompletedTodos = () => ({
+	type: 'todos/clearAllCompleted',
+});

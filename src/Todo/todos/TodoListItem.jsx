@@ -19,7 +19,7 @@ const TodoListItem = ({todo}) => {
 
 	const handleCompletedChanged = () => dispatch(todoToggled(todo.id));
 	const handleDelete = () => dispatch(todoDeleted(todo.id));
-	const handleColorChanged = (e) => dispatch(todoChangedColor(e.target));
+	const handleColorChanged = (e) => dispatch(todoChangedColor(todo.id, e.target.value));
 
 	return (
 		<li>

@@ -13,7 +13,6 @@ export const filtersReducer = produce((state, action) => {
 		case 'filter/filterStatus':
 			state.activeFilter = action.payload;
 			break;
-
 		case 'filter/colors':
 			const {color, type} = action.payload;
 			const {colors} = state;
