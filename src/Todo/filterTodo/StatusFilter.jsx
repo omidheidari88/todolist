@@ -12,7 +12,10 @@ const StatusFilter = () => {
 
 		return (
 			<li key={value}>
-				<button className={className} onClick={() => dispatch(changeFilterStatus(value))}>
+				<button
+					className={className}
+					onClick={() => dispatch(changeFilterStatus(value))}
+				>
 					{key}
 				</button>
 			</li>

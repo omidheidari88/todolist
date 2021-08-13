@@ -1,8 +1,7 @@
 import {useSelector} from 'react-redux';
-import {todosState} from '../todos/reducer/todosSlice';
 
 const RemainingTodos = () => {
-	const todos = useSelector(todosState);
+	const todos = useSelector((state) => state.todos.entities);
 	const remainTodo = todos?.filter((todo) => (!todo.completed ? true : false));
 	const count = remainTodo?.length;
 
