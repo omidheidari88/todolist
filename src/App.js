@@ -1,26 +1,14 @@
-import Header from "./Todo/addTodo/Header";
-import TodoList from "./Todo/todos/TodoList";
-import Footer from "./Todo/filterTodo/Footer";
+import React from 'react';
+import AddPost from './components/posts/AddPost';
+import Posts from './components/posts/Posts';
 
-function App() {
-  return (
-    <div className="App">
-      <nav>
-        <section>
-          <h1>Todo List App Example JS...</h1>
-        </section>
-      </nav>
-      <main>
-        <section className="medium-container">
-          <div className="todoapp">
-            <Header />
-            <TodoList />
-            <Footer />
-          </div>
-        </section>
-      </main>
-    </div>
-  );
-}
+const App = () => {
+	return (
+		<>
+			<AddPost />
+			<Posts />
+		</>
+	);
+};
 
 export default App;
